@@ -12,9 +12,13 @@ chico = pygame.image.load("img/chico.png")#Chico 1
 gato = pygame.image.load("img/gato_derecha.png")
 
 
-corazon1 = pygame.image.load("img/corazon.png")
-corazon2 = pygame.image.load("img/corazonverde.png")
+pez1 = pygame.image.load("img/pez.png")
+pez2 = pygame.image.load("img/pez.png")
+pez3 = pygame.image.load("img/pez.png")
+pez4 = pygame.image.load("img/pez.png")
 mouse = pygame.image.load("img/mouse.png")
+mouse2 = pygame.image.load("img/mouse.png")
+dog = pygame.image.load("img/dog.png")
 
 
 #Datos
@@ -35,35 +39,40 @@ fondo.blit(texto,(50,100)) #Mostramos el texto y su posición
 # ambiente.play()
 
 #score
+score = 0
 
 Ejecuta=True
 while(Ejecuta): #Variable
     screen.blit(fondo,(1,0))
     # Lineas Horizontales (Filas)
-    pygame.draw.line(screen,"yellow",(1067,170),(440,170),10) # Linea 1
-    pygame.draw.line(screen,"yellow",(565,295),(1065,295),10) # Linea 2
-    pygame.draw.line(screen,"yellow",(565,415),(431,415),10) # Linea 3
-    pygame.draw.line(screen,"Yellow",(950,415),(810,415),10) # Linea 3.1
-    pygame.draw.line(screen,"yellow",(820,530),(695,530),10) # Linea 4
-    pygame.draw.line(screen,"yellow",(562,650),(820,650),10) # Linea 5
-    pygame.draw.line(screen,"yellow",(1067,775),(440,775),10) # Linea 6
+    pygame.draw.line(screen,"green",(1067,170),(440,170),10) # Linea 1
+    pygame.draw.line(screen,"green",(565,295),(1065,295),10) # Linea 2
+    pygame.draw.line(screen,"green",(565,415),(431,415),10) # Linea 3
+    pygame.draw.line(screen,"green",(950,415),(810,415),10) # Linea 3.1
+    pygame.draw.line(screen,"green",(820,530),(695,530),10) # Linea 4
+    pygame.draw.line(screen,"green",(562,650),(820,650),10) # Linea 5
+    pygame.draw.line(screen,"green",(1067,775),(440,775),10) # Linea 6
 
     # Lineas Verticales (Columnas)
-    pygame.draw.line(screen,"skyblue",(435,166),(435,415),10) # linea  1
-    pygame.draw.line(screen,"skyblue",(435,535),(435,780),10) # linea  1.1
-    pygame.draw.line(screen,"skyblue",(560,535),(560,415),10) # Linea  2
-    pygame.draw.line(screen,"skyblue",(692,535),(692,300),10) # linea  3
-    pygame.draw.line(screen,"skyblue",(815,655),(815,534),10) # Linea 4
-    pygame.draw.line(screen,"skyblue",(945,415),(945,780),10) # linea  5
-    pygame.draw.line(screen,"skyblue",(1070,166),(1070,415),10) # linea  6 
-    pygame.draw.line(screen,"skyblue",(1070,535),(1070,780),10) # linea  6.1
+    pygame.draw.line(screen,"green",(435,166),(435,415),10) # linea  1
+    pygame.draw.line(screen,"green",(435,535),(435,780),10) # linea  1.1
+    pygame.draw.line(screen,"green",(560,535),(560,415),10) # Linea  2
+    pygame.draw.line(screen,"green",(692,535),(692,300),10) # linea  3
+    pygame.draw.line(screen,"green",(815,655),(815,534),10) # Linea 4
+    pygame.draw.line(screen,"green",(945,415),(945,780),10) # linea  5
+    pygame.draw.line(screen,"green",(1070,166),(1070,415),10) # linea  6 
+    pygame.draw.line(screen,"green",(1070,535),(1070,780),10) # linea  6.1
 
 
     screen.blit(chico,(1150,300))
     screen.blit(gato,(PosX,PosY))
-    screen.blit(corazon1,(980,450))
-    screen.blit(corazon2,(730,690))
+    screen.blit(pez1,(960,450))
+    screen.blit(pez2,(712,690))
     screen.blit(mouse,(600,450))
+    screen.blit(mouse,(600,210))
+    pezuno=screen.blit(pez3,(460,570))
+    screen.blit(pez4,(700,320))
+    screen.blit(dog,(970,205))
     for evento in pygame.event.get():
         if(evento.type==QUIT):
             Ejecuta=False
@@ -92,6 +101,7 @@ while(Ejecuta): #Variable
                     PosX = 710
                 if((PosX >= 840)and(PosX <= 860))and((PosY >= 420)and(PosY <= 670)):#24
                     PosX = 840
+                
                 print(PosX,PosY)
                 
             if(evento.key == K_LEFT):
@@ -154,6 +164,11 @@ while(Ejecuta): #Variable
                     PosY = 670
                 if((PosX >= 731)and(PosX <= 950))and((PosY >= 310)and(PosY <= 340)):#21
                     PosY = 310
+                if((PosX==450)and(PosY==510)):
+                    fuente1 = pygame.font.SysFont("Comic Sans MS", 40) #Citamos fuente y tamaño de letra
+                    texto = fuente1.render("Score:001", True, "orange") 
+                    fondo.blit(texto,(70,50))
+                    pezuno=screen.blit(pez3,(0,0))
                 print(PosX,PosY)
 
     pygame.display.update()
